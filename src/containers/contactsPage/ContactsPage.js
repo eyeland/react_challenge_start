@@ -1,15 +1,26 @@
-import { props } from "bluebird";
+
 import { React, useEffect, useState } from "react";
+import { ContactForm } from "../../components/contactForm/ContactForm";
+import { TileList } from "../../components/tileList/TileList";
 
-
-export const ContactsPage = () => {
+export const ContactsPage = (props) => {
   /*
   Define state variables for 
   contact info and duplicate check
   */
-  const [contactInfo, setContactInfo] = useState();
-  //const [duplicateCheck, setDuplicateCheck] = useState();
-  const { newContact, contacts } = props;
+  const [contactInfo, setContactInfo] = useState({
+    name: '',
+    phone: '',
+    email: ''
+  });
+  const [duplicateName, setDuplicateName] = useState(false);
+
+  const {newContact, contacts} = props;
+  
+
+  useEffect(() => {
+   if(contacts.find(item => item.name === contactInfo.name)) { setDuplicateName(true) }
+  })
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,6 +28,11 @@ export const ContactsPage = () => {
     Add contact info and clear data
     if the contact name is not a duplicate
     */
+   if (duplicateName === false) {
+    newContact(e.target.value)
+    setContactInfo({name:'', phone:'', email:''})
+   }
+
   };
 
   /*
@@ -32,6 +48,7 @@ export const ContactsPage = () => {
       <hr />
       <section>
         <h2>Contacts</h2>
+        <TileList />
       </section>
     </div>
   );
