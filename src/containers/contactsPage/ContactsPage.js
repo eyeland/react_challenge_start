@@ -3,6 +3,7 @@ import { React, useEffect, useState } from "react";
 import { ContactForm } from "../../components/contactForm/ContactForm";
 import { TileList } from "../../components/tileList/TileList";
 
+
 export const ContactsPage = (props) => {
   /*
   Define state variables for 
@@ -44,11 +45,18 @@ export const ContactsPage = (props) => {
     <div>
       <section>
         <h2>Add Contact</h2> 
+        <ContactForm 
+          contactInfo={contactInfo}
+          duplicateName={duplicateName}
+          setContactInfo={setContactInfo}
+          setDuplicateName={setDuplicateName}
+          handleSubmit={handleSubmit}
+        />
       </section>
       <hr />
       <section>
         <h2>Contacts</h2>
-        <TileList />
+        <TileList contacts={contacts}/>
       </section>
     </div>
   );
