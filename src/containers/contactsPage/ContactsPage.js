@@ -21,7 +21,10 @@ export const ContactsPage = (props) => {
 
   useEffect(() => {
    if(contacts.find(item => item.name === contactInfo.name)) { setDuplicateName(true) }
-  })
+   else {setDuplicateName(false)}
+  } 
+  
+  )
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,8 +33,8 @@ export const ContactsPage = (props) => {
     if the contact name is not a duplicate
     */
    if (duplicateName === false) {
-    newContact(e.target.value)
-    setContactInfo({name:'', phone:'', email:''})
+    newContact(contactInfo)
+    // setContactInfo({name:'', phone:'', email:''})
    }
 
   };

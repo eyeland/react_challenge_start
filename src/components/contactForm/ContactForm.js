@@ -18,36 +18,40 @@ export const ContactForm = ({
 */
 
 export const ContactForm = (props) => {
-    const handleChangeName = e => {
-      props.setContactInfo({name: e.target.value})
-    }
-    const handlePhoneNumber = e => {
-      props.setContactInfo({phone: e.target.value})
-    }
-    const handleEmail = e => {
-      props.setContactInfo({email: e.target.value})
-    }
+
+   const setContactInfo = props.setContactInfo
+   const contactInfo = props.contactInfo
+
+   const handleChange = (e) => {
+     setContactInfo({
+       ...contactInfo,
+       [e.target.name] : e.target.value.trim()
+     })
+   }
 
   return(
     <div>
       <form onSubmit={props.handleSubmit}>
         <input type='text' placeholder='name' 
+          name='name'
           value={props.contactInfo.name}
-          onChange={handleChangeName}
+          onChange={handleChange}
           />
 
         <input type='tel'  placeholder='phone number' 
+          name='phone'
           //pattern="[1-9][0-9]{2}-[1-9][0-9]{2}-[0-9]{4}" fix number
           value={props.contactInfo.phone}
-          onChange={handlePhoneNumber}
+          onChange={handleChange}
           />
 
         <input type='email' placeholder='email'
+          name='email'
           value={props.contactInfo.email}
-          onChange={handleEmail}
+          onChange={handleChange}
         />
 
-        <button type='submit'/>
+        <input type='submit'/>
       </form>
 
     </div>
