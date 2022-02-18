@@ -27,6 +27,11 @@ export const AppointmentsPage = (props) => {
       timeEnteredIntoForm: Object.values(timeEnteredIntoForm).join(),
       contact: Object.values(contact)
     })
+
+    setCurrentTitle({currentTitle: ''})
+    setData({data: ''})
+    setTimeEnteredIntoForm({timeEnteredIntoForm: ''})
+    setContact({contact: ''})
    
   };
 

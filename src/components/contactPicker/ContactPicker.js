@@ -5,6 +5,7 @@ export const ContactPicker = (props) => {
   return (
    <div>  
      <select onChange={onChange} >
+       <option value="nocontact" key='nocontact' selected>No Contact</option>
       {contacts.map((item) => {
         return(
           
