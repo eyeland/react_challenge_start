@@ -15,7 +15,8 @@ function App() {
   const [appointments, setAppointments] = useState([
     {currentTitle: 'work',
     data: 'some date',
-    timeEnteredIntoForm: 'another random time'
+    timeEnteredIntoForm: 'another random time',
+    contact: 'billss'
     }]);
 
   const ROUTES = {
